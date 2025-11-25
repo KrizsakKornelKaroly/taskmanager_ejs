@@ -1,0 +1,26 @@
+<%- include ('header') %>
+            
+    <h1>Naptár</h1>   
+    
+    <div id="calendar"></div>
+
+<%- include ('footer') %>
+
+
+<script>
+    var events = <%- JSON.stringify(calEvents) %>;
+    var calendarEl = document.getElementById('calendar');
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+     
+        initialView: 'dayGridMonth',
+        locale: 'hu',
+        headerToolbar: {
+            left: 'prev,today,next',
+            center: 'title',
+            right: 'multiMonthYear,dayGridMonth,timeGridWeek,timeGridDay,listWeek',
+        },
+        events: events
+    });
+    calendar.render();
+ 
+</script>

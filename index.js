@@ -11,8 +11,15 @@ app.use(session({
     secret: process.env.SESSION_SECRET
 }));
 
-const routes = require('./modules/torpek');
-app.use('/', routes);
+const core = require('./modules/core');
+app.use('/', core);
+
+const users = require('./modules/users');
+app.use('/users', users);
+
+const tasks = require('./modules/tasks');
+app.use('/tasks', tasks);
+
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

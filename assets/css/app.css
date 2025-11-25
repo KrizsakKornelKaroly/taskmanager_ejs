@@ -1,0 +1,31 @@
+body{
+    background-color: silver;
+}
+header{
+    background-color: slategray;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border: 5px solid white;
+}
+main{
+    background-color: white;
+    margin: 10px;
+}
+footer{
+    background-color: black;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    letter-spacing: 3px;
+    font-size: 80%;
+}
+.container{
+    background-color: white;
+    padding: 10px;
+    box-shadow: 0 0 10px black;
+}   
+
+.text-justify{
+    text-align: justify;
+}

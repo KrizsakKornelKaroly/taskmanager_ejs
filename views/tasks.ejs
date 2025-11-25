@@ -1,0 +1,38 @@
+<%- include ('header') %>
+            
+    <h1>Feladatok</h1>
+    <%- include ('message') %>
+
+    <table class="table table-hover table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Feladat megnevezése</th>
+                <th>Kezdés</th>
+                <th>Befejezés</th>
+                <th class="text-end">Műveletek</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% results.forEach((item, index) => { %>
+            <tr>
+                <td><%= (index+1) %></td>
+                <td><%= item.title %></td>
+                <td><%= item.start %></td>
+                <td><%= item.end %></td>
+                <td class="text-end">
+                    <a href="">SZ</a>
+                    <a href="">T</a>
+                </td>
+            </tr>
+            <% }) %>
+
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="5" class="text-end">Összesen: <span><%= results.length %></span> feladat</td>
+            </tr>
+        </tfoot>
+    </table>
+
+<%- include ('footer') %>
