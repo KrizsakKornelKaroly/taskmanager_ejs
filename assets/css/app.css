@@ -29,3 +29,14 @@ footer{
 .text-justify{
     text-align: justify;
 }
+em{
+    color: red;
+    font-weight: bold;
+}
+#chart{
+    max-height: 400px;
+    max-width: 400px;
+}
+.card h1{
+    color: darkblue;
+}

@@ -1,0 +1,11 @@
+CREATE OR REPLACE VIEW statistics AS
+SELECT 
+	t.userId as uId,
+	(SELECT COUNT(*) FROM tasks WHERE `status` = 1 AND userId = t.userId) as openTasks,
+    (SELECT COUNT(*) FROM tasks WHERE `status` = 0 AND userId = t.userId) as closedTasks,
+    (SELECT COUNT(*) FROM tasks WHERE userId = t.userId) as totalTasks,
+    (SELECT AVG(DATEDIFF(end, start)) FROM tasks WHERE userId = t.userId) as avgTaskLength,
+    (SELECT MIN(DATEDIFF(end, start)) FROM tasks WHERE userId = t.userId) as minTaskLength,
+    (SELECT MAX(DATEDIFF(end, start)) FROM tasks WHERE userId = t.userId) as maxTaskLength
+FROM tasks t 
+GROUP BY t.userId

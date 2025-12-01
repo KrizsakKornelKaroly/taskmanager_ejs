@@ -25,12 +25,17 @@
                 <% } %>
               <!--Logged in-->
               <% if (session.user) { %>
+                
               <li class="nav-item">
                 <a class="nav-link" href="/tasks">Feladatok</a>
               </li>
 
               <li class="nav-item">
                 <a class="nav-link" href="/tasks/calendar">Naptár</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="/tasks/statistics">Statisztika</a>
               </li>
 
               <li class="nav-item">

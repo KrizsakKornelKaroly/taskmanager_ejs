@@ -6,7 +6,7 @@ const passwdRegExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
 
 // Login page
 router.get('/login', (req, res) => {
-    ejs.renderFile('views/login.ejs', { session: req.session }, (err, html) => {
+    ejs.renderFile('views/users/login.ejs', { session: req.session }, (err, html) => {
         if (err) {
             console.log(err);
         }
@@ -50,7 +50,7 @@ router.post('/login', (req, res) => {
 
 // Registration page
 router.get('/registration', (req, res) => {
-    ejs.renderFile('views/registration.ejs', { session: req.session }, (err, html) => {
+    ejs.renderFile('views/users/registration.ejs', { session: req.session }, (err, html) => {
         if (err) {
             console.log(err);
         }

@@ -1,0 +1,85 @@
+<%- include ('../system/header') %>
+            
+    <h1>Feladatok</h1>
+    <%- include ('../system/message') %>
+
+    <a href="/tasks/new" class="btn btn-sm btn-outline-secondary">Új feladat</a>
+
+    <h5 class="my-3">Folyamatban lévő feladatok</h5>
+    <% if (openTasks.length == 0) { %>
+        <div>Jelenleg nincsenek folyamatban lévő feladatok.</div>
+    <% } else { %>
+    <table class="table table-hover table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Feladat megnevezése</th>
+                <th>Kezdés</th>
+                <th>Befejezés</th>
+                <th class="text-end">Műveletek</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% openTasks.forEach((item, index) => { %>
+            <tr>
+                <td><%= (index+1) %></td>
+                <td><%= item.title %></td>
+                <td><%= item.start %></td>
+                <td><%= item.end %></td>
+                <td class="text-end">
+                    <a href="/tasks/ready/<%=item.id%>" class="btn btn-sm me-2"><u>Kész</u></a>
+                    <a href="/tasks/edit/<%=item.id%>" class="btn btn-sm me-2"><u>Szerkesztés</u></a>
+                    <a href="/tasks/delete/<%=item.id%>" class="btn btn-sm"><u>Törlés</u></a>
+                </td>
+            </tr>
+            <% }) %>
+
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="5" class="text-end">Összesen: <span><%= openTasks.length %></span> feladat</td>
+            </tr>
+        </tfoot>
+    </table>
+    <% } %>
+
+    <hr>
+
+    <h5>Lezárt feladatok</h5>
+
+    <% if (closedTasks.length == 0) { %>
+    <div>Jelenleg nincsenek lezárt feladatok.</div>
+    <% } else { %>
+    <table class="table table-hover table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Feladat megnevezése</th>
+                <th>Kezdés</th>
+                <th>Befejezés</th>
+                <th class="text-end">Műveletek</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% closedTasks.forEach((item, index) => { %>
+            <tr>
+                <td><%= (index+1) %></td>
+                <td><%= item.title %></td>
+                <td><%= item.start %></td>
+                <td><%= item.end %></td>
+                <td class="text-end">
+                    <a href="/tasks/ready/<%=item.id%>" class="btn btn-sm me-2"><u>Újranyitás</u></a>
+                </td>
+            </tr>
+            <% }) %>
+
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="5" class="text-end">Összesen: <span><%= closedTasks.length %></span> feladat</td>
+            </tr>
+        </tfoot>
+    </table>
+    <% } %>
+
+<%- include ('../system/footer') %>

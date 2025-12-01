@@ -1,0 +1,45 @@
+<%- include ('../system/header') %>
+            
+    <h1>Statisztika</h1>   
+    
+    <div class="d-flex flex-row">
+
+        <canvas id="chart"></canvas>
+        
+        <div class="d-flex flex-column text-center">
+            
+            <div class="card mb-3 p-3">
+                <h5>Legrövidebb&nbsp;feladat</h5>
+                <h1><%= data.minTaskLength %> nap</h1>
+            </div>
+            <div class="card mb-3 p-3">
+                <h5>Leghosszabb&nbsp;feladat</h5>
+                <h1><%= data.maxTaskLength %> nap</h1>
+            </div>
+            <div class="card mb-3 p-3">
+                <h5>Átlagos&nbsp;feladathossz</h5>
+                <h1><%= data.avgTaskLength %> nap</h1>
+            </div>
+        </div>
+    </div>
+    <script>
+        const ctx = document.getElementById('chart');
+      
+        new Chart(ctx, {
+          type: 'doughnut',
+          data: {
+            labels: ['Nyitott', 'Lezárt'],
+            datasets: [{
+              label: 'Feladatok száma',
+              data: [<%= data.openTasks %>, <%= data.closedTasks %>],
+                backgroundColor: [
+                    'rgba(255, 206, 86, 0.7)',
+                    'rgba(75, 192, 192, 0.7)'
+                ],
+              borderWidth: 1
+            }]
+          }
+        });
+      </script>
+
+<%- include ('../system/footer') %>

@@ -1,0 +1,37 @@
+<%- include ('../system/header') %>
+            
+    <h1>Feladatok</h1>
+    <%- include ('../system/message') %>
+
+    <h3>Feladat módosítása</h3>
+
+    <form action="/tasks/edit/<%= task.id %>" method="post">
+
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="title" placeholder="" name="title" value="<%= session.body ? session.body.title : task.title %>">
+            <label for="title">Feladat megnevezése <em>*</em></label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <textarea class="form-control" placeholder="" id="description" name="description"><%= session.body ? session.body.description : task.description %></textarea>
+            <label for="description">Leírás</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="date" class="form-control" id="start" placeholder="" name="start" value="<%= session.body ? session.body.start : task.start %>">
+            <label for="start">Kezdés<em>*</em></label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="date" class="form-control" id="end" placeholder="" name="end" value="<%= session.body ? session.body.end : task.end %>">
+            <label for="end">Befejezés <em>*</em></label>
+        </div>
+
+        <input type="submit" value="Módosítás" name="update" class="btn btn-outline-primary mt-3">
+
+    </form>
+
+    <p>A <em>*</em>-al jelölt mezők kitöltése kötelező!</p>
+    <a href="/tasks" class="btn btn-outline-secondary me-1">Vissza</a>
+
+<%- include ('../system/footer') %>
